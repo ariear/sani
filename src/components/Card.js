@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native"
+import { Image, Pressable, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native"
 import Entypo from 'react-native-vector-icons/Entypo'
 
 const Card = ({navigation}) => {
@@ -11,12 +11,17 @@ const Card = ({navigation}) => {
                 <View style={style.wrapcontent}>
                     <Text style={style.title}>Chainsaw Man</Text>
                     <Text style={style.episode}>24 Episode</Text>
-                    <Entypo 
-                        name="dots-three-vertical"
-                        size={18}
-                        color='#FFFFFF'
-                        style={style.dots}
-                        onPress={() => console.log('triger dots')} />
+                    <View style={style.dots}>
+                        <Pressable
+                            onPress={() => console.log('triger dots')}
+                            android_ripple={{ color: '#138462' }}
+                            style={{ padding: 7 }}>
+                            <Entypo 
+                                name="dots-three-vertical"
+                                size={18}
+                                color='#FFFFFF' />
+                        </Pressable>
+                    </View>
                 </View>
             </View>
         </TouchableNativeFeedback>
@@ -51,12 +56,11 @@ const style = StyleSheet.create({
     dots:{
         backgroundColor: '#14C38E',
         alignSelf: 'baseline',
-        paddingVertical: 7,
-        paddingHorizontal: 7,
         borderRadius: 50,
         position: 'absolute',
         bottom: 10,
-        right: 10
+        right: 10,
+        overflow: 'hidden'
     }
 })
 
