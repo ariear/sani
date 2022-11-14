@@ -1,9 +1,9 @@
 import { Image, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native"
 import Entypo from 'react-native-vector-icons/Entypo'
 
-const Card = () => {
+const Card = ({navigation}) => {
     return (
-        <TouchableNativeFeedback>
+        <TouchableNativeFeedback onPress={() => navigation.navigate('DetailAnime')} >
             <View style={style.card}>
                 <Image 
                     source={{ uri: 'https://cdn.myanimelist.net/images/anime/1806/126216.jpg' }} 

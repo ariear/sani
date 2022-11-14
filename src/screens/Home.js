@@ -13,9 +13,9 @@ const Home = ({ navigation  }) => {
     return (
         <View style={style.main}>
             <StatusBar backgroundColor="#14C38E" />
-            <NavMain />
+            <NavMain navigation={navigation} />
             <ScrollView showsVerticalScrollIndicator={false} >
-                <Card />
+                <Card navigation={navigation} />
             </ScrollView>
             <BtnAdd navigation={navigation} />
         </View>

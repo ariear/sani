@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native"
 import Octicons from 'react-native-vector-icons/Octicons'
 
-const NavMain = () => {
+const NavMain = ({navigation}) => {
     return (
         <View style={style.nav}>
             <View style={style.sidenav}>
@@ -10,7 +10,11 @@ const NavMain = () => {
                     style={style.iconnav} />
                 <Text style={style.titlenav}>Sani</Text>
             </View>
-            <Octicons name="gear" size={30} color='#FFFFFF' />
+            <Octicons 
+                name="gear" 
+                size={30} 
+                color='#FFFFFF'
+                onPress={() => navigation.navigate('Setting')} />
         </View>
     )
 }
