@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native"
+import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import Octicons from 'react-native-vector-icons/Octicons'
 
 const NavMain = ({navigation}) => {
@@ -10,11 +10,17 @@ const NavMain = ({navigation}) => {
                     style={style.iconnav} />
                 <Text style={style.titlenav}>Sani</Text>
             </View>
-            <Octicons 
-                name="gear" 
-                size={30} 
-                color='#FFFFFF'
-                onPress={() => navigation.navigate('Setting')} />
+            <View style={{ overflow: 'hidden', borderRadius: 50 }}>
+                <Pressable
+                    onPress={() => navigation.navigate('Setting')}
+                    android_ripple={{ color: '#138462' }}
+                    style={{ padding: 8 }}>
+                    <Octicons 
+                        name="gear" 
+                        size={28} 
+                        color='#FFFFFF' />
+                </Pressable>
+            </View>
         </View>
     )
 }
@@ -32,8 +38,8 @@ const style = StyleSheet.create({
     },
     iconnav: {
         marginRight: 10,
-        width: 40,
-        height: 40
+        width: 35,
+        height: 35
     },
     titlenav: {
         fontSize: 20,
