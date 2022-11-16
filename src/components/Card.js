@@ -1,7 +1,11 @@
 import { Image, Pressable, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native"
 import Entypo from 'react-native-vector-icons/Entypo'
+import { useRef } from "react"
+import ModalAction from "./ModalAction"
 
 const Card = ({navigation}) => {
+    const modalRef = useRef()
+
     return (
         <TouchableNativeFeedback onPress={() => navigation.navigate('DetailAnime')} >
             <View style={style.card}>
@@ -13,7 +17,7 @@ const Card = ({navigation}) => {
                     <Text style={style.episode}>24 Episode</Text>
                     <View style={style.dots}>
                         <Pressable
-                            onPress={() => console.log('triger dots')}
+                            onPress={() => modalRef.current.open()}
                             android_ripple={{ color: '#138462' }}
                             style={{ padding: 7 }}>
                             <Entypo 
@@ -22,6 +26,7 @@ const Card = ({navigation}) => {
                                 color='#FFFFFF' />
                         </Pressable>
                     </View>
+                    <ModalAction modalRef={modalRef} />
                 </View>
             </View>
         </TouchableNativeFeedback>
