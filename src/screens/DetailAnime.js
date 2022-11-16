@@ -1,7 +1,11 @@
+import { useRef } from "react"
 import { ImageBackground, Pressable, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native"
 import Feather from 'react-native-vector-icons/Feather'
+import ModalAction from "../components/ModalAction"
 
 const DetailAnime = ({navigation}) => {
+    const modalRef = useRef()
+
     return (
         <View style={style.main}>
             <StatusBar translucent backgroundColor={'transparent'} />
@@ -20,6 +24,7 @@ const DetailAnime = ({navigation}) => {
                     </View>
                     <View style={{ borderRadius: 50, overflow: 'hidden' }}>
                         <Pressable
+                            onPress={() => modalRef.current.open()}
                             android_ripple={{ color: '#138462' }}
                             style={{ padding: 5 }}>
                                 <Feather
@@ -27,6 +32,7 @@ const DetailAnime = ({navigation}) => {
                                     size={28}
                                     color="#FFFFFF" />
                         </Pressable>
+                        <ModalAction modalRef={modalRef} />
                     </View>
                 </View>
             </ImageBackground>

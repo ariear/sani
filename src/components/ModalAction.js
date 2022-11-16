@@ -13,7 +13,9 @@ const ModalAction = ({modalRef}) => {
             },
             draggableIcon: {
             backgroundColor: "#000"
-            }}}>
+            }
+            }}
+            height={240}>
             <ContentModalAction />   
     </RBSheet>
     )
