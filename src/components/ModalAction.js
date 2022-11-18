@@ -1,7 +1,7 @@
 import RBSheet from "react-native-raw-bottom-sheet"
 import ContentModalAction from "./ContentModalAction"
 
-const ModalAction = ({modalRef}) => {
+const ModalAction = ({modalRef, data, deleteHandler}) => {
     return (
     <RBSheet
             ref={modalRef}
@@ -16,7 +16,7 @@ const ModalAction = ({modalRef}) => {
             }
             }}
             height={240}>
-            <ContentModalAction />   
+            <ContentModalAction data={data} deleteHandler={deleteHandler} />   
     </RBSheet>
     )
 }

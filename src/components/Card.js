@@ -3,18 +3,18 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import { useRef } from "react"
 import ModalAction from "./ModalAction"
 
-const Card = ({navigation}) => {
+const Card = ({navigation, data, listAnimes, deleteHandler}) => {
     const modalRef = useRef()
 
     return (
         <TouchableNativeFeedback onPress={() => navigation.navigate('DetailAnime')} >
             <View style={style.card}>
                 <Image 
-                    source={{ uri: 'https://cdn.myanimelist.net/images/anime/1806/126216.jpg' }} 
+                    source={{ uri: data.cover }} 
                     style={style.cardthumb} />
                 <View style={style.wrapcontent}>
-                    <Text style={style.title}>Chainsaw Man</Text>
-                    <Text style={style.episode}>24 Episode</Text>
+                    <Text style={style.title}>{data.dataAnime.title}</Text>
+                    <Text style={style.episode}>{data.dataAnime.episodes} Episode</Text>
                     <View style={style.dots}>
                         <Pressable
                             onPress={() => modalRef.current.open()}
@@ -26,7 +26,10 @@ const Card = ({navigation}) => {
                                 color='#FFFFFF' />
                         </Pressable>
                     </View>
-                    <ModalAction modalRef={modalRef} />
+                    <ModalAction 
+                        modalRef={modalRef}
+                        data={data}
+                        deleteHandler={deleteHandler} />
                 </View>
             </View>
         </TouchableNativeFeedback>
@@ -44,7 +47,7 @@ const style = StyleSheet.create({
     cardthumb: {
         width: 130,
         height: 120,
-        marginRight: 14
+        marginRight: 10
     },
     wrapcontent: {
         flex: 1
