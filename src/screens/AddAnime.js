@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import InputTitle from "../components/InputTitle"
 import NavClose from '../components/NavClose'
 import UsedInet from "../components/UsedInet"
-import { launchImageLibrary } from "react-native-image-picker";
+import DocumentPicker from 'react-native-document-picker'
 
 const AddAnime = ({navigation}) => {
     const [isInet, setIsInet] = useState(false)
@@ -18,7 +18,6 @@ const AddAnime = ({navigation}) => {
     const [cover, setCover] = useState('')
 
     const [localData, setLocalData] = useState([])
-    const [coverLocal, setCoverLocal] = useState('')
 
     const onSearchHandler = () => {
             setListAnime([])
@@ -33,7 +32,18 @@ const AddAnime = ({navigation}) => {
 
     const addHandler = async () => {
         try {
-            const newData = [...localData, {cover, dataAnime}]
+            let newData
+            if (!isInet) {
+                newData = [...localData, {
+                    cover,
+                    dataAnime: {
+                        mal_id: Math.floor(Math.random() * (10 - 1 + 100000000)) + 100000000,
+                        title: title,
+                        episodes: 'none',
+                    }}]
+            }else{
+                newData = [...localData, {cover, dataAnime}]
+            }
             await AsyncStorage.setItem('animes', JSON.stringify(newData))
             navigation.navigate('Home')
         } catch (error) {
@@ -41,18 +51,18 @@ const AddAnime = ({navigation}) => {
         }
     }
 
-    // const pickCoverLocal = () => {
-    //     let option = {
-    //         mediaType: 'photo',
-    //         quality: 1,
-    //         includeBase64: true
-    //     }
+    const pickCoverLocal = async () => {
+        try {
+            const res = await DocumentPicker.pick({
+                type: [DocumentPicker.types.images],
+                copyTo: 'documentDirectory'
+            })
 
-    //     launchImageLibrary(option, response => {
-    //         console.log(response.assets[0].base64);
-    //         setCoverLocal(response.assets[0].base64)
-    //     })
-    // }
+            setCover(res[0].fileCopyUri)
+        } catch (error) {
+            
+        }
+    }
 
     const getAnimes = async () => {
         const getNim = await AsyncStorage.getItem('animes')
@@ -83,22 +93,15 @@ const AddAnime = ({navigation}) => {
                     isNotFound={isNotFound}
                     isLoading={isLoading} />
                 <View style={style.wrapcontent}>
-                    {/* <Text style={style.label}>Pilih sampul</Text>
-                    <TouchableNativeFeedback onPress={pickCoverLocal}><View style={[style.btn,{backgroundColor: '#47B5FF'}]}><Text style={{ color: '#FFFFFF' }}>Pilih</Text></View></TouchableNativeFeedback> */}
+                    <Text style={style.label}>Pilih sampul</Text>
+                    <TouchableNativeFeedback onPress={pickCoverLocal}><View style={[style.btn,{backgroundColor: '#47B5FF'}]}><Text style={{ color: '#FFFFFF' }}>Pilih</Text></View></TouchableNativeFeedback>
                     <View style={style.coverWrap}>
                         {
-                            dataAnime &&
-                                cover &&
+                            cover &&
                                 <Image 
                                     source={{ uri: cover }}
                                     style={style.cover} />
                         }
-                        {/* {
-                            coverLocal &&
-                                <Image
-                                    source={{ uri: 'data:image/png;base64,' + coverLocal }}
-                                    style={style.cover} />
-                        } */}
                     </View>
                 </View>
                 <TouchableNativeFeedback onPress={addHandler} ><View style={[style.btn,{backgroundColor: '#8D9EFF'}]}><Text style={{ color: '#FFFFFF' }}>Simpan</Text></View></TouchableNativeFeedback>

@@ -1,19 +1,19 @@
-import { Image, Pressable, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native"
+import { Image, Pressable, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native"
 import Entypo from 'react-native-vector-icons/Entypo'
 import { useRef } from "react"
 import ModalAction from "./ModalAction"
 
-const Card = ({navigation, data, listAnimes, deleteHandler}) => {
+const Card = ({navigation, data, deleteHandler}) => {
     const modalRef = useRef()
 
     return (
         <TouchableNativeFeedback onPress={() => navigation.navigate('DetailAnime')} >
             <View style={style.card}>
-                <Image 
-                    source={{ uri: data.cover }} 
-                    style={style.cardthumb} />
+                    <Image 
+                        source={{ uri: data.cover }} 
+                        style={style.cardthumb} />
                 <View style={style.wrapcontent}>
-                    <Text style={style.title}>{data.dataAnime.title}</Text>
+                    <Text style={style.title} numberOfLines={3} >{data.dataAnime.title}</Text>
                     <Text style={style.episode}>{data.dataAnime.episodes} Episode</Text>
                     <View style={style.dots}>
                         <Pressable

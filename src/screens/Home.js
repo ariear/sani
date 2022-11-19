@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useEffect, useState } from "react"
-import { View, StyleSheet, ScrollView, StatusBar } from "react-native"
+import { View, StyleSheet, ScrollView, StatusBar, Text } from "react-native"
 import SplashScreen from 'react-native-splash-screen'
 import BtnAdd from "../components/BtnAdd"
 import Card from "../components/Card"
@@ -40,15 +40,17 @@ const Home = ({ navigation  }) => {
             <NavMain navigation={navigation} />
             <ScrollView showsVerticalScrollIndicator={false} >
                 {
+                    listAnimes !== null ?
                     listAnimes.length > 0 &&
                         listAnimes.map((anime,index) => 
                             <Card 
-                                navigation={navigation}
                                 key={index}
+                                navigation={navigation}
                                 data={anime}
-                                listAnimes={listAnimes}
                                 deleteHandler={deleteHandler} />
                         )
+                        :
+                    <Text style={style.notFoundText}>Belum ada anime yang tersimpan</Text>
                 }
             </ScrollView>
             <BtnAdd navigation={navigation} />
@@ -61,6 +63,12 @@ const style = StyleSheet.create({
         height: '100%',
         backgroundColor: '#14C38E',
         paddingHorizontal: 20
+    },
+    notFoundText:{
+        textAlign: 'center',
+        fontSize: 16,
+        color: '#FFFFFF',
+        paddingTop: 40
     }
 })
 
