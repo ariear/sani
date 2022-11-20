@@ -4,6 +4,8 @@ import Home from "./src/screens/Home"
 import AddAnime from "./src/screens/AddAnime"
 import Setting from "./src/screens/Setting"
 import DetailAnime from "./src/screens/DetailAnime"
+import { useEffect } from "react"
+import { AppDefaultContext } from "./src/contexts/DefaultContext"
 
 const App = () => {
   const Root = createStackNavigator()
@@ -25,14 +27,15 @@ const App = () => {
     )
   }
   
-  const DetailAnimeScreen = () => {
+  const DetailAnimeScreen = ({route}) => {
     return (
       <ModalStack.Navigator initialRouteName="DetailAnimePage" screenOptions={{ headerShown: false }}>
-        <ModalStack.Screen name="DetailAnimePage" component={DetailAnime} />
+        <ModalStack.Screen name="DetailAnimePage" initialParams={{ data: route.params.data }} component={DetailAnime} />
       </ModalStack.Navigator>
     )
   }
   return (
+    <AppDefaultContext>
     <NavigationContainer>
       <Root.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }} >
         <Root.Screen name="Home" component={Home} />
@@ -41,6 +44,7 @@ const App = () => {
         <Root.Screen name="DetailAnime" component={DetailAnimeScreen} />
       </Root.Navigator>
     </NavigationContainer>
+    </AppDefaultContext>
   )
 }
 

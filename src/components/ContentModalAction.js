@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native"
 
-const ContentModalAction = ({data, deleteHandler}) => {
+const ContentModalAction = ({data, deleteHandler,navigation}) => {
 
     return (
         <View style={style.main}>
@@ -16,7 +16,7 @@ const ContentModalAction = ({data, deleteHandler}) => {
             <View style={{ borderRadius: 5, overflow: 'hidden' }}>
                 <Pressable
                     android_ripple={{ color: '#138462', foreground: true }}
-                    onPress={() => deleteHandler(data.dataAnime.mal_id)}>
+                    onPress={() => deleteHandler(data.dataAnime.mal_id,navigation)}>
                     <Text 
                         style={[style.btn, {backgroundColor: '#FF6464', color: 'white'}]}
                     >Hapus</Text>

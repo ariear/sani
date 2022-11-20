@@ -41,7 +41,8 @@ const AddAnime = ({navigation}) => {
                         title: title,
                         episodes: 'none',
                     },
-                    episodes: [{mal_id,title: 'none'}]
+                    episodes: [{mal_id: 1,title: 'none'}],
+                    endEpisode: 0
                 }]
             }else{
                 try {
@@ -50,7 +51,9 @@ const AddAnime = ({navigation}) => {
                     newData = [...localData, {
                         cover, 
                         dataAnime, 
-                        episodes: episodes.data.data}]
+                        episodes: episodes.data.data,
+                        endEpisode: 0
+                    }]
                 } catch (error) {
                     console.log(error);
                 }

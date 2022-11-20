@@ -7,7 +7,7 @@ const Card = ({navigation, data, deleteHandler}) => {
     const modalRef = useRef()
 
     return (
-        <TouchableNativeFeedback onPress={() => navigation.navigate('DetailAnime')} >
+        <TouchableNativeFeedback onPress={() => navigation.navigate('DetailAnime', {data})} >
             <View style={style.card}>
                     <Image 
                         source={{ uri: data.cover }} 
@@ -29,7 +29,8 @@ const Card = ({navigation, data, deleteHandler}) => {
                     <ModalAction 
                         modalRef={modalRef}
                         data={data}
-                        deleteHandler={deleteHandler} />
+                        deleteHandler={deleteHandler}
+                        navigation={navigation} />
                 </View>
             </View>
         </TouchableNativeFeedback>

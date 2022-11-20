@@ -5,24 +5,10 @@ import SplashScreen from 'react-native-splash-screen'
 import BtnAdd from "../components/BtnAdd"
 import Card from "../components/Card"
 import NavMain from "../components/NavMain"
+import { useDefaultContext } from "../contexts/DefaultContext"
 
 const Home = ({ navigation  }) => {
-    const [listAnimes, setListAnimes] = useState([])
-
-    const getAnimes = async () => {
-        const getNim = await AsyncStorage.getItem('animes')
-        setListAnimes(JSON.parse(getNim))
-    }
-
-    const deleteHandler = async (mal_id) => {
-        const filterData = listAnimes.filter(anime => anime.dataAnime.mal_id !== mal_id)
-        try {
-            await AsyncStorage.setItem('animes', JSON.stringify(filterData))
-            navigation.replace('Home')
-        } catch (error) {
-            
-        }
-    }
+    const { getAnimes, deleteHandler, listAnimes } = useDefaultContext()
 
     useEffect(() => {
         SplashScreen.hide()
