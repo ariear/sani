@@ -40,9 +40,20 @@ const AddAnime = ({navigation}) => {
                         mal_id: Math.floor(Math.random() * (10 - 1 + 100000000)) + 100000000,
                         title: title,
                         episodes: 'none',
-                    }}]
+                    },
+                    episodes: [{mal_id,title: 'none'}]
+                }]
             }else{
-                newData = [...localData, {cover, dataAnime}]
+                try {
+                    const episodes = await axios.get(`https://api.jikan.moe/v4/anime/${dataAnime.mal_id}/episodes`)
+                    
+                    newData = [...localData, {
+                        cover, 
+                        dataAnime, 
+                        episodes: episodes.data.data}]
+                } catch (error) {
+                    console.log(error);
+                }
             }
             await AsyncStorage.setItem('animes', JSON.stringify(newData))
             navigation.navigate('Home')
