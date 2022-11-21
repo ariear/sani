@@ -7,7 +7,7 @@ import NavClose from '../components/NavClose'
 import UsedInet from "../components/UsedInet"
 import DocumentPicker from 'react-native-document-picker'
 
-const AddAnime = ({navigation}) => {
+const AddAnime = ({navigation, route}) => {
     const [isInet, setIsInet] = useState(false)
     const [title, setTitle] = useState('')
     const [listAnime, setListAnime] = useState([])
@@ -31,38 +31,38 @@ const AddAnime = ({navigation}) => {
     }
 
     const addHandler = async () => {
-        try {
             let newData
-            if (!isInet) {
-                newData = [...localData, {
-                    cover,
-                    dataAnime: {
-                        mal_id: Math.floor(Math.random() * (10 - 1 + 100000000)) + 100000000,
-                        title: title,
-                        episodes: 'none',
-                    },
-                    episodes: [{mal_id: 1,title: 'none'}],
-                    endEpisode: 0
-                }]
-            }else{
                 try {
-                    const episodes = await axios.get(`https://api.jikan.moe/v4/anime/${dataAnime.mal_id}/episodes`)
-                    
-                    newData = [...localData, {
-                        cover, 
-                        dataAnime, 
-                        episodes: episodes.data.data,
-                        endEpisode: 0
-                    }]
+                    if (!isInet) {
+                        newData = [...localData, {
+                            cover,
+                            dataAnime: {
+                                mal_id: Math.floor(Math.random() * (10 - 1 + 100000000)) + 100000000,
+                                title: title,
+                                episodes: 'none',
+                            },
+                            episodes: [{mal_id: 1,title: 'none'}],
+                            endEpisode: 0
+                        }]
+                    }else{
+                        try {
+                            const episodes = await axios.get(`https://api.jikan.moe/v4/anime/${dataAnime.mal_id}/episodes`)
+                            
+                            newData = [...localData, {
+                                cover, 
+                                dataAnime, 
+                                episodes: episodes.data.data,
+                                endEpisode: 0
+                            }]
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }
+                    await AsyncStorage.setItem('animes', JSON.stringify(newData))
+                    navigation.navigate('Home')
                 } catch (error) {
-                    console.log(error);
+                    console.log('error');
                 }
-            }
-            await AsyncStorage.setItem('animes', JSON.stringify(newData))
-            navigation.navigate('Home')
-        } catch (error) {
-            console.log('error');
-        }
     }
 
     const pickCoverLocal = async () => {
@@ -80,16 +80,27 @@ const AddAnime = ({navigation}) => {
 
     const getAnimes = async () => {
         const getNim = await AsyncStorage.getItem('animes')
-        if (getNim !== null) setLocalData(JSON.parse(getNim))
+        if (getNim !== null) {
+            setLocalData(JSON.parse(getNim))
+            if (route.params.isEdit) {
+                setLocalData(JSON.parse(getNim).filter(anime => anime.dataAnime.mal_id !== route.params.data.dataAnime.mal_id))
+            }
+        }
     }
 
     useEffect(() => {
         getAnimes()
+        
+        if (route.params.isEdit) {
+            setDataAnime(route.params.data.dataAnime)
+            setTitle(route.params.data.dataAnime.title)
+            setCover(route.params.data.cover)
+        }
     }, []);
 
     return (
         <View style={style.main}>
-            <NavClose title="Tambah Anime" navigation={navigation} />
+            <NavClose title={route.params.title} navigation={navigation} />
 
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={[style.wrapcontent,{paddingTop: 16}]}>

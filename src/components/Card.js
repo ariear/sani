@@ -3,7 +3,7 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import { useRef } from "react"
 import ModalAction from "./ModalAction"
 
-const Card = ({navigation, data, deleteHandler}) => {
+const Card = ({navigation, data}) => {
     const modalRef = useRef()
 
     return (
@@ -29,7 +29,6 @@ const Card = ({navigation, data, deleteHandler}) => {
                     <ModalAction 
                         modalRef={modalRef}
                         data={data}
-                        deleteHandler={deleteHandler}
                         navigation={navigation} />
                 </View>
             </View>

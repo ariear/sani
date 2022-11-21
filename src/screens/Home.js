@@ -8,7 +8,7 @@ import NavMain from "../components/NavMain"
 import { useDefaultContext } from "../contexts/DefaultContext"
 
 const Home = ({ navigation  }) => {
-    const { getAnimes, deleteHandler, listAnimes } = useDefaultContext()
+    const { getAnimes, listAnimes } = useDefaultContext()
 
     useEffect(() => {
         SplashScreen.hide()
@@ -32,8 +32,7 @@ const Home = ({ navigation  }) => {
                             <Card 
                                 key={index}
                                 navigation={navigation}
-                                data={anime}
-                                deleteHandler={deleteHandler} />
+                                data={anime} />
                         )
                         :
                     <Text style={style.notFoundText}>Belum ada anime yang tersimpan</Text>

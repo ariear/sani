@@ -1,13 +1,16 @@
 import { Pressable, StyleSheet, Text, View } from "react-native"
+import { useDefaultContext } from "../contexts/DefaultContext"
 
-const ContentModalAction = ({data, deleteHandler,navigation}) => {
+const ContentModalAction = ({data, navigation}) => {
+    const {deleteHandler} = useDefaultContext()
 
     return (
         <View style={style.main}>
             <Text style={style.title}>{data.dataAnime.title}</Text>
             <View style={{ borderRadius: 5, overflow: 'hidden', marginBottom: 10 }}>
                 <Pressable
-                    android_ripple={{ color: '#138462', foreground: true }}>
+                    android_ripple={{ color: '#138462', foreground: true }}
+                    onPress={() => navigation.navigate('Modal',{isEdit: true, data, title: 'Edit Anime'})}>
                     <Text 
                         style={[style.btn, {backgroundColor: '#FFE15D'}]}
                     >Edit</Text>

@@ -5,7 +5,7 @@ const BtnAdd = ({navigation}) => {
     return (
         <View style={style.pluscirclePress}>
             <Pressable
-                onPress={() => navigation.navigate('Modal')}
+                onPress={() => navigation.navigate('Modal', {title: 'Tambah Anime', isEdit: false})}
                 android_ripple={{ color: '#138462', foreground: true }}>
                 <AntDesign 
                         name="pluscircle" 

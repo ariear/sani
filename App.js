@@ -4,17 +4,18 @@ import Home from "./src/screens/Home"
 import AddAnime from "./src/screens/AddAnime"
 import Setting from "./src/screens/Setting"
 import DetailAnime from "./src/screens/DetailAnime"
-import { useEffect } from "react"
 import { AppDefaultContext } from "./src/contexts/DefaultContext"
 
 const App = () => {
   const Root = createStackNavigator()
   const ModalStack = createStackNavigator()
   
-  const ModalScreen = () => {
+  const ModalScreen = ({route}) => {
+    const { title, isEdit, data } = route.params
+
     return (
       <ModalStack.Navigator initialRouteName="AddAnime" screenOptions={{ headerShown: false }} >
-        <ModalStack.Screen name="AddAnime" component={AddAnime} />
+        <ModalStack.Screen name="AddAnime" initialParams={{ title, isEdit, data }} component={AddAnime} />
       </ModalStack.Navigator>
     )
   }
