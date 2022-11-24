@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Image, ScrollView, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native"
+import { Image, ScrollView, StatusBar, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import InputTitle from "../components/InputTitle"
 import NavClose from '../components/NavClose'
@@ -100,6 +100,7 @@ const AddAnime = ({navigation, route}) => {
 
     return (
         <View style={style.main}>
+        <StatusBar translucent={false} backgroundColor="#14C38E" />
             <NavClose title={route.params.title} navigation={navigation} />
 
             <ScrollView showsVerticalScrollIndicator={false}>

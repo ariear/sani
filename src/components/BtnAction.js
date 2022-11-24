@@ -1,11 +1,11 @@
 import { StyleSheet, View, Pressable, Text } from "react-native"
 
-const BtnAction = ({title, bgcolor}) => {
+const BtnAction = ({title, bgcolor, handler}) => {
     return (
         <View style={{ overflow: 'hidden', borderRadius: 7, marginBottom: 10 }}>
                 <Pressable
                     android_ripple={{ foreground: true, color: '#00000' }}
-                    onPress={() => console.log('Tempis')}>
+                    onPress={handler}>
                     <Text style={[style.btn,{backgroundColor: bgcolor}]}>{title}</Text>
                 </Pressable>
         </View>
