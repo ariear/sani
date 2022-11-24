@@ -18,7 +18,8 @@ const style = StyleSheet.create({
         paddingVertical: 10,
         textAlign: 'center',
         borderRadius: 7,
-        fontWeight: '500'
+        fontWeight: '500',
+        fontFamily: 'Rubik-Regular'
     }
 })
 

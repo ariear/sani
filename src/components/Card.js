@@ -55,7 +55,8 @@ const style = StyleSheet.create({
     title: {
         fontSize: 16,
         color: '#1C1D27',
-        paddingVertical: 5
+        paddingVertical: 5,
+        fontFamily: 'Rubik-Regular'
     },
     episode: {
         fontSize: 14,

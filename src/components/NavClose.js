@@ -32,7 +32,8 @@ const style = StyleSheet.create({
         fontSize: 18,
         color: '#FFFFFF',
         fontWeight: '500',
-        letterSpacing: 0.7
+        letterSpacing: 0.7,
+        fontFamily: 'Rubik-Medium'
     }
 })
 

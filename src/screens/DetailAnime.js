@@ -112,15 +112,18 @@ const style = StyleSheet.create({
         fontSize: 28,
         color: '#FFFFFF',
         fontWeight: '500',
-        marginBottom: 7
+        marginBottom: 7,
+        fontFamily: 'Rubik-Medium'
     },
     episode: {
         fontSize: 16,
         color: '#975C8D',
-        marginBottom: 5
+        marginBottom: 5,
+        fontFamily: 'Rubik-Regular'
     },
     endepisode: {
-        color: '#372948'
+        color: '#372948',
+        fontFamily: 'Rubik-Regular'
     },
     wrapCardEpisode: {
         marginTop: 20
@@ -130,7 +133,8 @@ const style = StyleSheet.create({
         padding: 16,
         borderRadius: 5,
         color: '#FFFFFF',
-        lineHeight: 20
+        lineHeight: 20,
+        fontFamily: 'Rubik-Light'
     }
 })
 

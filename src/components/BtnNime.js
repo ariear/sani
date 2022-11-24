@@ -33,7 +33,8 @@ const style = StyleSheet.create({
         paddingHorizontal: 14,
         paddingVertical: 7,
         borderRadius: 50,
-        fontSize: 12
+        fontSize: 12,
+        fontFamily: 'Rubik-Light'
     },
 })
 

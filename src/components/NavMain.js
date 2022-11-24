@@ -45,7 +45,8 @@ const style = StyleSheet.create({
         fontSize: 20,
         fontWeight: '500',
         letterSpacing: 0.8,
-        color: '#FFFFFF'
+        color: '#FFFFFF',
+        fontFamily: 'Rubik-Medium'
     }
 })
 

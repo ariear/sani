@@ -7,7 +7,7 @@ const WallpaperSet = ({pickImage, wallpaper, opacity, setOpacity}) => {
         <View>
             <Text style={style.title}>Wallpaper</Text>
             <View style={style.wrapContent}>
-                <Text style={{ marginBottom: 10 }}>Pilih gambar</Text>
+                <Text style={style.titleDes}>Pilih gambar</Text>
                 <BtnAction title="Pilih" bgcolor='#8D9EFF' handler={pickImage} />
 
                 <View style={style.coverWrap}>
@@ -19,9 +19,9 @@ const WallpaperSet = ({pickImage, wallpaper, opacity, setOpacity}) => {
                     }
                 </View>
 
-                <Text style={{ marginBottom: 10 }}>Transparansi wallpaper</Text>
+                <Text style={style.titleDes}>Transparansi wallpaper</Text>
                 <View style={style.wrapContent}>
-                    <Text style={{ textAlign: 'center', color: 'white' }}>{parseInt(opacity * 100)}%</Text>
+                    <Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Rubik-Regular' }}>{parseInt(opacity * 100)}%</Text>
                     <Slider 
                         style={{ width: '100%', height: 40 }}
                         minimumValue={0}
@@ -39,8 +39,8 @@ const WallpaperSet = ({pickImage, wallpaper, opacity, setOpacity}) => {
 
 const style = StyleSheet.create({
     title: {
-        fontWeight: '700',
-        marginBottom: 10
+        marginBottom: 10,
+        fontFamily: 'Rubik-Medium'
     },
     wrapContent: {
         borderWidth: 1,
@@ -63,6 +63,10 @@ const style = StyleSheet.create({
         height: 200,
         resizeMode: 'contain',
         backgroundColor: '#282A3A'
+    },
+    titleDes: {
+        fontFamily: 'Rubik-Regular',
+        marginBottom: 10
     }
 })
 

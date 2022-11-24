@@ -120,7 +120,7 @@ const AddAnime = ({navigation, route}) => {
                     isLoading={isLoading} />
                 <View style={style.wrapcontent}>
                     <Text style={style.label}>Pilih sampul</Text>
-                    <TouchableNativeFeedback onPress={pickCoverLocal}><View style={[style.btn,{backgroundColor: '#47B5FF'}]}><Text style={{ color: '#FFFFFF' }}>Pilih</Text></View></TouchableNativeFeedback>
+                    <TouchableNativeFeedback onPress={pickCoverLocal}><View style={[style.btn,{backgroundColor: '#47B5FF'}]}><Text style={{ color: '#FFFFFF', fontFamily: 'Rubik-Regular' }}>Pilih</Text></View></TouchableNativeFeedback>
                     <View style={style.coverWrap}>
                         {
                             cover &&
@@ -130,7 +130,7 @@ const AddAnime = ({navigation, route}) => {
                         }
                     </View>
                 </View>
-                <TouchableNativeFeedback onPress={addHandler} ><View style={[style.btn,{backgroundColor: '#8D9EFF'}]}><Text style={{ color: '#FFFFFF' }}>Simpan</Text></View></TouchableNativeFeedback>
+                <TouchableNativeFeedback onPress={addHandler} ><View style={[style.btn,{backgroundColor: '#8D9EFF'}]}><Text style={{ color: '#FFFFFF', fontFamily: 'Rubik-Regular' }}>Simpan</Text></View></TouchableNativeFeedback>
             </ScrollView>
         </View>
     )
@@ -146,7 +146,8 @@ const style = StyleSheet.create({
         marginBottom: 7,
         color: '#FFFFFF',
         fontSize: 16,
-        fontWeight: '500'
+        fontWeight: '500',
+        fontFamily: 'Rubik-Regular'
     },
     wrapcontent: {
         marginBottom: 10

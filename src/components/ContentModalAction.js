@@ -38,14 +38,16 @@ const style = StyleSheet.create({
         fontWeight: '500',
         color: '#372948',
         letterSpacing: 0.3,
-        marginBottom: 16
+        marginBottom: 16,
+        fontFamily: 'Rubik-Medium'
     },
     btn: {
         textAlign: 'center',
         paddingVertical: 10,
         borderRadius: 5,
         color: '#372948',
-        fontWeight: '500'
+        fontWeight: '500',
+        fontFamily: 'Rubik-Regular'
     }
 })
 

@@ -50,7 +50,8 @@ const style = StyleSheet.create({
         marginBottom: 5
     },
     inettitle: {
-        color: '#FFFFFF'
+        color: '#FFFFFF',
+        fontFamily: 'Rubik-Light'
     },
     wrapnime: {
         flexDirection: 'row',
