@@ -30,8 +30,7 @@ const style = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingVertical: 18,
-        paddingHorizontal: 20
+        paddingVertical: 18
     },
     sidenav: {
         flexDirection: 'row',
